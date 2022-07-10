@@ -1,3 +1,4 @@
+//Slider
 $('.menu__slider').slick({
     slidesToShow: 4.7,
     slidesToScroll: 2,
@@ -44,6 +45,8 @@ $('.delivery__slider').slick({
     dots: true
 })
 
+//Gallery
+
 $('.gallery__list').magnificPopup({
     delegate: 'a',
     type: 'image',
@@ -56,8 +59,8 @@ $('.gallery__list').magnificPopup({
     }
 });
 
-//BURGER MENU
 
+//BURGER MENU
 const openBtn = document.querySelector('.burger-menu__icon');
 const menu = document.querySelector('.burger-menu');
 const closeBtn = document.querySelector('.burger-menu__close');
