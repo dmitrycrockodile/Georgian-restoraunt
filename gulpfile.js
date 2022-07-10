@@ -26,10 +26,10 @@ function images() {
 
 function scripts() {
   return src([
-    'node_modules/jquery/dist/jquery.js',
     'node_modules/slick-carousel/slick/slick.js',
+    'node_modules/jquery/dist/jquery.js',
     'app/js/jquery.magnific-popup.min.js',
-    'app/js/main.js'
+    'app/js/main.js',
   ])
     .pipe(concat('main.min.js'))
     .pipe(uglify())
@@ -39,20 +39,25 @@ function scripts() {
 
 
 function styles() {
-  return src('app/scss/style.scss')
-      .pipe(scss({outputStyle: 'compressed'}))
-      .pipe(concat('style.min.css'))
-      .pipe(autoprefixer({
-        overrideBrowserslist: ['last 10 version'],
-        grid: true
-      }))
-      .pipe(dest('app/css'))
-      .pipe(browserSync.stream())
+  return src([
+    'app/css/magnific-popup.css',
+    'app/scss/style.scss'
+  ])
+    .pipe(concat('style.min.css'))
+    .pipe(scss({outputStyle: 'compressed'}))
+    .pipe(uglify())
+    .pipe(autoprefixer({
+      overrideBrowserslist: ['last 10 version'],
+      grid: true
+    }))
+    .pipe(dest('app/css'))
+    .pipe(browserSync.stream())
 }
 
 function build() {
   return src([
     'app/css/style.min.css',
+    'app/css/magnific-popup.css',
     'app/fonts/**/*',
     'app/js/main.min.js',
     'app/*.html'
